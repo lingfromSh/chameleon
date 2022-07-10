@@ -1,0 +1,19 @@
+FROM rust:latest as server-builder
+
+# use tuna as crates mirror
+COPY docker/cargo.config /${HOME}/.cargo/config
+
+COPY . /app
+
+WORKDIR /app
+
+RUN cargo build --release
+
+FROM alpine:latest as runner
+
+COPY --from=0 /app/target/release/chameleon /app/chameleon
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && apk update 
+RUN apk add yasm ffmpeg
+
+CMD [ "/bin/sh", "/app/chameleon"]

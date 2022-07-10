@@ -1,0 +1,16 @@
+[project]
+name = "chameleon"
+
+[server]
+host = "127.0.0.1"
+port = "8000"
+
+[auth]
+jwt_key = "wdHn5UFd170x5DC6O62oEXBvuMywwUov08Wi3p6pKwOKoAAXwCXBBQ8WBGnxIMDb"
+jwt_salt = "NOZpNQp4pxtSkf-M"
+
+[database]
+conn_url = "postgres://root:password@localhost"
+
+[redis]
+conn_url = "redis://root:password@localhost"

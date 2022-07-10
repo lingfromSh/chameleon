@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - "deploy/nginx:/etc/nginx"
+
+  chameleon:
+    image: chameleon:latest
+    
+  chameleon-image:
+    image: chameleon-image:latest
+  
+  chameleon-video:
+    image: chameleon-video:latest
+
+  minio:
+    image: minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
