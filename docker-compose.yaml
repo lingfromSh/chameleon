@@ -4,21 +4,42 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - "deploy/nginx:/etc/nginx"
 
-  chameleon:
-    image: chameleon:latest
+  # chameleon-web:
+  #   image: chameleon-web:latest
     
-  chameleon-image:
-    image: chameleon-image:latest
+  # chameleon-core:
+    # image: chameleon-core:latest
   
-  chameleon-video:
-    image: chameleon-video:latest
+  # chameleon-image:
+  #   image: chameleon-image:latest
+  
+  # chameleon-video:
+  #   image: chameleon-video:latest
 
-  minio:
-    image: minio:latest
-    ports:
-      - "9000:9000"
-      - "9001:9001"
+  # minio:
+  #   image: bitnami/minio:latest
+  #   ports:
+  #     - "9000:9000"
+  #     - "9001:9001"
+  #   environment:
+  #     - MINIO_ROOT_USER=chameleon-admin
+  #     - MINIO_ROOT_PASSWORD=chameleon-passwd
+
+  # postgres:
+  #   image: postgres:latest
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_USER=chameleon-admin
+  #     - POSTGRES_PASSWORD=chameleon-passwd
+  #     - PGDATA=/var/lib/postgresql/data/pgdata
+  #   volumes:
+  #     - pg_data:/var/lib/postgresql/data/
+
+
+volumes:
+  pg_data:
